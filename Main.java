@@ -2,6 +2,7 @@ public class Main {
 
     public static void main(String[] args){
         // frame only needs to be called in here
+        new Frame();
     }
 }
 //The first line in the document is the room the individual starts in
