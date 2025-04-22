@@ -25,7 +25,7 @@ public class Frame extends JFrame implements ActionListener {
         display.setEditable(false);
         display.setLineWrap(true);
         display.setWrapStyleWord(true);
-        display.setFont(new Font("Arial Black", Font.PLAIN, 18)); // 🔥 makes it larger
+        display.setFont(new Font("Arial Black", Font.PLAIN, 18));
         this.add(display, BorderLayout.CENTER);
 
 
