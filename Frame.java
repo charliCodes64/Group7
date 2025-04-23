@@ -136,7 +136,7 @@ public class Frame extends JFrame implements ActionListener {
 
     // Example method to load rooms from a file
     //loads the file into the program and assigns lines based on what they are
-    private ArrayList<Rooms> loadFromFile(String filename) {
+    /*private ArrayList<Rooms> loadFromFile(String filename) {
         ArrayList<Rooms> rooms = new ArrayList<>();
         Rooms currentRoom = null;
 
@@ -150,7 +150,7 @@ public class Frame extends JFrame implements ActionListener {
                     }
                     String roomDescription = line.substring("Room:".length());
                     currentRoom = new Rooms(roomDescription);
-                } else if (line.startsWith("Door") && currentRoom != null) {
+                } else if (line.startsWith("DoorL") && currentRoom != null) {
                     String[] parts = line.split(":");
                     String description = parts[1];
                     boolean success = description.toLowerCase().contains("'true'");
@@ -162,6 +162,46 @@ public class Frame extends JFrame implements ActionListener {
             }
         } catch(IOException e) {
             System.out.println("OIII WHAT ARE YA DOIN I CANT READ THAT!!!");
+        }
+
+        return rooms;
+    }*/
+    private ArrayList<Rooms> loadFromFile(String filename) {
+        ArrayList<Rooms> rooms = new ArrayList<>();
+        Rooms currentRoom = null;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty() || line.startsWith("===")) {
+                    continue; // Skip empty lines and separators
+                }
+
+                if (line.startsWith("Room:")) {
+                    if (currentRoom != null) {
+                        rooms.add(currentRoom);
+                    }
+                    String roomDescription = line.substring("Room:".length()).trim();
+                    currentRoom = new Rooms(roomDescription);
+                } else if (line.startsWith("DoorL:") && currentRoom != null) {
+                    String description = line.substring("DoorL:".length()).trim();
+                    boolean success = description.endsWith("'true'");
+                    description = description.replaceAll("'true'|'false'", "").trim();
+                    currentRoom.addDoors(new Doors("Left", description, success));
+                } else if (line.startsWith("DoorR:") && currentRoom != null) {
+                    String description = line.substring("DoorR:".length()).trim();
+                    boolean success = description.endsWith("'true'");
+                    description = description.replaceAll("'true'|'false'", "").trim();
+                    currentRoom.addDoors(new Doors("Right", description, success));
+                }
+            }
+            if (currentRoom != null) {
+                rooms.add(currentRoom);
+            }
+        } catch(IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
         }
 
         return rooms;
