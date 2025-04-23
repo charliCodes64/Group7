@@ -14,11 +14,14 @@ public class Doors {
         return this.doorDirection;
     }
     public String getDescription(){
-        return this.doorDirection;
+        return this.doorDescription;
     }
     public boolean getDoorAccessibility(){
-        boolean temp = true;
-        return temp;//this isnt right just a temp holding to not throw return error
+        return this.doorAccessibility;
+    }
+
+    public boolean DoorAccessibilityCorrect() {
+        return this.doorAccessibility;
     }
 
     //below the method should make a new file and write which room the player failed at
@@ -26,8 +29,7 @@ public class Doors {
 
     }
     public String toString(){
-        String temp = "temp";
-        return temp;//this isnt right just a temp holding to not throw return error
+        return doorDirection + ":" + doorDescription + "'" + doorAccessibility + "'";
     }
 
 }
