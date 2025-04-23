@@ -10,12 +10,15 @@ public class Rooms {
         this.doors = new ArrayList<>();
     }
     public void addDoors(Doors door){
+        doors.add(door);
     }
 
     public String getDescription(){
+        return roomDescription;
     }
 
     public ArrayList<Doors> getDoors(){
+        return doors;
     }
 
 }
