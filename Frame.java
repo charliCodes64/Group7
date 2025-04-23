@@ -16,7 +16,7 @@ public class Frame extends JFrame implements ActionListener {
     private int currRoomIndex = 0; //used to count number of rooms gone through before quitting or winning
     ArrayList <Rooms> rooms = new ArrayList<>();
 
-    //Feel free to upgrade window layout as of not it is fairly basic
+    //feel free to change window cosmetics
     public Frame(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 500);
@@ -26,8 +26,9 @@ public class Frame extends JFrame implements ActionListener {
         display.setEditable(false);
         display.setLineWrap(true);
         display.setWrapStyleWord(true);
-        display.setFont(new Font("Arial Black", Font.PLAIN, 18)); //feel free to change any cosmetics
+        display.setFont(new Font("Arial Black", Font.PLAIN, 18));
         this.add(display, BorderLayout.CENTER);
+
 
         panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -48,7 +49,7 @@ public class Frame extends JFrame implements ActionListener {
         currentRoom();
     }
 
-    // listens to the left & right button and deplays time between choices to make it nicer to play
+    //for left and right buttons and delays time between choices so its easier to follow
     public void actionPerformed(ActionEvent e) {
         Rooms currentRoom = rooms.get(currRoomIndex);
         ArrayList<Doors> doors = currentRoom.getDoors();
@@ -160,7 +161,7 @@ public class Frame extends JFrame implements ActionListener {
                 rooms.add(currentRoom);
             }
         }catch(IOException e) {
-            System.out.println("OIII WHAT ARE YA DOIN I CANT READ THAT!!!");//couldn't help myself
+            System.out.println("OIII WHAT ARE YA DOIN I CANT READ THAT!!!");
         }
 
         return rooms;
