@@ -7,19 +7,15 @@ public class Rooms {
 
     public Rooms (String roomDescription){
         this.roomDescription = roomDescription;
+        this.doors = new ArrayList<>();
     }
-    public static void addDoors(Doors door){
+    public void addDoors(Doors door){
+    }
 
-    }
     public String getDescription(){
-        return this.roomDescription;
     }
+
     public ArrayList<Doors> getDoors(){
-        return this.doors;//this isnt right just a temp holding to not throw return error
-    }
-    public String toString(){
-        String temp = "temp";
-        return temp;//this isnt right just a temp holding to not throw return error
     }
 
 }

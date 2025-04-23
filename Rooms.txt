@@ -1,0 +1,15 @@
+Room:You are in the first room of the maze
+DoorL:oak plank door (The Door catches fire once touched spreading quickly and closing all escapes!)'false'
+DoorR:purple door appears (A new room appears dark and damp)'true'
+============================================================================
+Room:You have made it to the second room of the maze
+DoorL:Stone door (A lonely cellar appears)'true'
+DoorR:Glass door(A bright light is emitted blinding you you fall back to the start!)'false'
+============================================================================
+Room:You have made to the third room of the maze
+DoorL:Poison Ivy covered door (You succumb to your itchy endeavours!)'false'
+DoorR:Hobbit sized door (This room is nothing like the Shire)'true'
+============================================================================
+Room:You have made it to the last room of the maze
+DoorL:door made of cheese (Why what a delicious choice)'true' 
+DoorR:door made of licorice (I knew I should have chosen the cheese now im back in the first room!!!)'false'
