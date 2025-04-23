@@ -160,7 +160,7 @@ public class Frame extends JFrame implements ActionListener {
             if (currentRoom != null) {
                 rooms.add(currentRoom);
             }
-        }catch(IOException e) {
+        } catch(IOException e) {
             System.out.println("OIII WHAT ARE YA DOIN I CANT READ THAT!!!");
         }
 
