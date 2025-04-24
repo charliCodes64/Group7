@@ -1,35 +1,38 @@
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class Doors {
 
     private String doorDescription;
-    private String doorDirection;
     //below if door is 'false' in txt doc they should not be able to continue and must restart
     private Boolean doorAccessibility;
 
-    Doors(String direction, String doorDescription, boolean doorAccessibility){
-        this.doorDirection = direction;
+    Doors(String doorDescription, boolean doorAccessibility){
         this.doorDescription = doorDescription;
         this.doorAccessibility = doorAccessibility;
     }
-    public String getDirection(){
-        return this.doorDirection;
-    }
     public String getDescription(){
         return this.doorDescription;
-    }
-    public boolean getDoorAccessibility(){
-        return this.doorAccessibility;
     }
 
     public boolean DoorAccessibilityCorrect() {
         return this.doorAccessibility;
     }
 
-    //below the method should make a new file and write which room the player failed at
-    public void failedAttemptWriter(String failedRoomDescription){
+    //below the method should make a new file and write which room in and what door caused them to fail
+    public void failedAttemptWriter(int roomNumber) {
+        try (FileWriter failed = new FileWriter("failedDoorsByRoom.txt", true);
+             PrintWriter writer = new PrintWriter(failed)) {
 
+            String cleanedDescription = this.getDescription().replaceAll("\\(.*?\\)", "").replaceAll("'true'|'false'", "");
+            writer.println("The " + cleanedDescription + " was wrong choice in room " + roomNumber + "!");
+        } catch (Exception e) {
+            System.out.println("OI I CANT WRITE THAT!!!");
+        }
     }
-    public String toString(){
-        return doorDirection + ":" + doorDescription + "'" + doorAccessibility + "'";
-    }
+
+//    public String toString(){
+//        return doorDirection + ":" + doorDescription + "'" + doorAccessibility + "'";
+//    }
 
 }
